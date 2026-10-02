@@ -1,6 +1,6 @@
 describe("Nails by Valeriia - E2E tests", () => {
   beforeEach(() => {
-    cy.visit("http://localhost:5175");
+    cy.visit("/");
   });
 
   it("відкриває головну сторінку", () => {
