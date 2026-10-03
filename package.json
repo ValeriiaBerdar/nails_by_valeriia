@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "prepare": "husky",
-    "test": "vitest run"
+    "test": "vitest run",
+    "test:e2e": "cypress run"
   },
   "dependencies": {
     "react": "^19.2.8",
