@@ -26,3 +26,12 @@
 Інтерфейс розділений на окремі React-компоненти: Header, Hero, Services, AdditionalServices, Gallery, BookingForm, Contacts та Footer.
 
 Проєкт створено в межах лабораторної роботи.
+
+## Тестування
+
+Для перевірки якості проекту налаштовано:
+- unit-тестування за допомогою Vitest;
+- E2E-тестування за допомогою Cypress;
+- автоматичну перевірку коду ESLint;
+- форматування коду Prettier;
+- Git Hooks за допомогою Husky.
