@@ -1,3 +1,4 @@
+import styles from '../App.module.css';
 import work from '../assets/work.jpg';
 import work1 from '../assets/work1.jpg';
 import work2 from '../assets/work2.jpg';
@@ -10,11 +11,11 @@ function Gallery() {
   const works = [work, work1, work2, work3, work4, work5, work6, work7];
 
   return (
-    <section id="gallery" className="gallery">
+    <section id="gallery" className={styles['gallery']}>
       <h2>Мої роботи</h2>
-      <div className="gallery-grid">
+      <div className={styles['gallery-grid']}>
         {works.map((photo, index) => (
-          <div className="gallery-item" key={index}>
+          <div className={styles['gallery-item']} key={index}>
             <img src={photo} alt={`Манікюр ${index + 1}`} />
           </div>
         ))}
