@@ -1,30 +1,20 @@
-import './App.css';
+import { useSyncExternalStore } from 'react';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import AdditionalServices from './components/AdditionalServices';
-import Gallery from './components/Gallery';
-import BookingForm from './components/BookingForm';
-import Contacts from './components/Contacts';
 import Footer from './components/Footer';
-
-function App() {
-  return (
-    <>
-      <Header />
-
-      <main>
-        <Hero />
-        <Services />
-        <AdditionalServices />
-        <Gallery />
-        <BookingForm />
-        <Contacts />
-      </main>
-
-      <Footer />
-    </>
-  );
+import HomePage from './pages/HomePage';
+import ServicesPage from './pages/ServicesPage';
+import GalleryPage from './pages/GalleryPage';
+import BookingPage from './pages/BookingPage';
+import LoginPage from './pages/LoginPage';
+const pages = { '/': HomePage, '/services': ServicesPage, '/gallery': GalleryPage, '/booking': BookingPage, '/login': LoginPage };
+function subscribe(listener) {
+  window.addEventListener('hashchange', listener);
+  return () => window.removeEventListener('hashchange', listener);
 }
-
-export default App;
+function getPath() { return window.location.hash.slice(1) || '/'; }
+function NotFoundPage() { return <section><h1>Сторінку не знайдено</h1><a href="#/">На головну</a></section>; }
+export default function App() {
+  const path = useSyncExternalStore(subscribe, getPath, () => '/');
+  const Page = pages[path] || NotFoundPage;
+  return <><Header currentPath={path} /><main key={path}><Page /></main><Footer /></>;
+}

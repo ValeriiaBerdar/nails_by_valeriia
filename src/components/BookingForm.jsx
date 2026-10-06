@@ -1,8 +1,10 @@
+import styles from '../App.module.css';
 function BookingForm() {
   return (
-    <section id="booking" className="booking">
+    <section id="booking" className={styles['booking']}>
       <h2>Онлайн-запис</h2>
-      <form className="booking-form">
+      <p className={styles.notice}>Макет форми: онлайн-запис поки недоступний.</p>
+      <form className={styles['booking-form']}>
         <label>
           Оберіть послугу
           <select>
@@ -39,7 +41,7 @@ function BookingForm() {
           <input type="tel" placeholder="+380..." />
         </label>
 
-        <button type="submit">Підтвердити запис</button>
+        <button type="button" disabled>Підтвердити запис</button>
       </form>
     </section>
   );

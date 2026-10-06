@@ -1,9 +1,10 @@
+import styles from '../App.module.css';
 function AdditionalServices() {
   return (
-    <section className="additional-services">
+    <section className={styles['additional-services']}>
       <h2>Також доступно</h2>
 
-      <div className="additional-services-list">
+      <div className={styles['additional-services-list']}>
         <p>Покриття гель-лаком</p>
         <p>Педикюр</p>
         <p>Догляд за стопами</p>

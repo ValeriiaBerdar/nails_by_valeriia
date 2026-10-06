@@ -1,20 +1,21 @@
+import styles from '../App.module.css';
 function Services() {
   return (
-    <section id="services" className="services">
+    <section id="services" className={styles['services']}>
       <h2>Послуги</h2>
 
-      <div className="services-list">
-        <article className="service-card">
+      <div className={styles['services-list']}>
+        <article className={styles['service-card']}>
           <h3>Манікюр</h3>
           <p>Акуратний та доглянутий вигляд ваших нігтів.</p>
         </article>
 
-        <article className="service-card">
+        <article className={styles['service-card']}>
           <h3>Укріплення нігтів</h3>
           <p>Зміцнення натуральних нігтів для міцності та комфорту.</p>
         </article>
 
-        <article className="service-card">
+        <article className={styles['service-card']}>
           <h3>Нарощення</h3>
           <p>Створення бажаної довжини та форми нігтів.</p>
         </article>
