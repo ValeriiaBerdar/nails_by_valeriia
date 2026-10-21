@@ -1,30 +1,53 @@
-import './App.css';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import AdditionalServices from './components/AdditionalServices';
-import Gallery from './components/Gallery';
-import BookingForm from './components/BookingForm';
-import Contacts from './components/Contacts';
+import { 
+  HashRouter,
+   Routes,
+    Route,
+     useLocation, 
+     Link,
+     } from 'react-router-dom';
+
+import Header from './components/Header'; 
 import Footer from './components/Footer';
 
-function App() {
+import HomePage from './pages/HomePage';
+ import ServicesPage from './pages/ServicesPage'; 
+ import GalleryPage from './pages/GalleryPage';
+  import BookingPage from './pages/BookingPage';
+   import LoginPage from './pages/LoginPage';
+
+function NotFoundPage() { 
   return (
-    <>
-      <Header />
+     <section> 
+     <h1>Сторінку не знайдено</h1>
+      <Link to="/">На головну</Link> 
+      </section>
+       );
+       }
 
-      <main>
-        <Hero />
-        <Services />
-        <AdditionalServices />
-        <Gallery />
-        <BookingForm />
-        <Contacts />
-      </main>
+function AppContent() {
+   const { pathname } = useLocation();
+return (
+   <> <Header currentPath={pathname} />
 
-      <Footer />
-    </>
-  );
+  <main key={pathname}>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/services" element={<ServicesPage />} />
+      <Route path="/gallery" element={<GalleryPage />} />
+      <Route path="/booking" element={<BookingPage />} />
+      <Route path="/login" element={<LoginPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  </main>
+
+  <Footer />
+</>
+); 
 }
-
-export default App;
+export default function App() {
+   return (
+     <HashRouter> 
+      <AppContent />
+       </HashRouter>
+        );
+       }

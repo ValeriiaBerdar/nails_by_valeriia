@@ -1,26 +1,44 @@
-function Services() {
-  return (
-    <section id="services" className="services">
-      <h2>Послуги</h2>
+import styles from '../App.module.css';
+ import useServices from '../hooks/useServices';
 
-      <div className="services-list">
-        <article className="service-card">
-          <h3>Манікюр</h3>
-          <p>Акуратний та доглянутий вигляд ваших нігтів.</p>
+const descriptions = {
+   manicure: 'Акуратний та доглянутий вигляд ваших нігтів.',
+    strengthening: 'Зміцнення натуральних нігтів для міцності та комфорту.',
+     extensions: 'Створення бажаної довжини та форми нігтів.', 
+    };
+
+function Services() { 
+  const { services, loading, error } = useServices();
+
+return (
+   <section id="services" className={styles.services}>
+     <h2>Послуги</h2>
+
+  {loading && <p role="status">Завантаження послуг...</p>}
+
+  {error && <p role="alert">{error}</p>}
+
+  {!loading && !error && services.length === 0 && (
+    <p>Наразі немає доступних послуг.</p>
+  )}
+
+  {!loading && !error && (
+    <div className={styles['services-list']}>
+      {services.map((service) => (
+        <article
+          key={service.id}
+          className={styles['service-card']}
+        >
+          <h3>{service.name}</h3>
+          <p>{descriptions[service.id]}</p>
+          <p>
+            <strong>{service.price} грн</strong>
+          </p>
         </article>
-
-        <article className="service-card">
-          <h3>Укріплення нігтів</h3>
-          <p>Зміцнення натуральних нігтів для міцності та комфорту.</p>
-        </article>
-
-        <article className="service-card">
-          <h3>Нарощення</h3>
-          <p>Створення бажаної довжини та форми нігтів.</p>
-        </article>
-      </div>
-    </section>
-  );
-}
-
+      ))}
+    </div>
+  )}
+</section>
+);
+ }
 export default Services;
